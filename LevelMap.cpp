@@ -24,8 +24,6 @@
 #include <stdio.h>
 #include <string.h>
 
-//#include <KConfig>  // TODO
-
 #include "LevelMap.h"
 #include "LevelCollection.h"
 

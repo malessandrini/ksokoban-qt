@@ -2,10 +2,8 @@
 #include <assert.h>
 #include <unistd.h>
 #include <string.h>
-
+#include <QSettings>
 #include <QFile>
-//#include <KSharedConfig>  // TODO
-//#include <KConfigGroup>   // TODO
 #include "LevelCollection.h"
 
 #include "Map.h"
@@ -150,39 +148,38 @@ LevelCollection::indexTextCollection() {
 }
 
 void
-LevelCollection::loadPrefs() {  // TODO
-//  if (id_ >= 0) {
-//    KSharedConfigPtr cfg=KSharedConfig::openConfig();
-//	KConfigGroup settingsGroup(cfg, "settings");
+LevelCollection::loadPrefs() {
+  if (id_ >= 0) {
+	QSettings sett;
 
-//    QString key = QString::asprintf("level%d", id_);
-//    level_ = settingsGroup.readEntry(key, QStringLiteral("0")).toInt();
+	QString key = QString::asprintf("level%d", id_);
+	level_ = sett.value(key, 0).toInt();
 
-//    key = QString::asprintf("status%d", id_);
-//    unsigned long x = settingsGroup.readEntry(key, QStringLiteral("0")).toULong();
+	key = QString::asprintf("status%d", id_);
+	unsigned long x = sett.value(key, 0).toULongLong();
 
-//    x = backward(x, 0xc1136a15ul, 0x12ul, 0x80ff0b94ul);
-//    x = backward(x, 0xd38fd2ddul, 0x01ul, 0xd4d657b4ul);
-//    x = backward(x, 0x59004eeful, 0x1eul, 0xf6c75e2cul);
-//    x = backward(x, 0x366c3e25ul, 0x0aul, 0x61ebc208ul);
-//    x = backward(x, 0x20a784c9ul, 0x15ul, 0x207d488bul);
-//    x = backward(x, 0xc02864abul, 0x09ul, 0x709e62a3ul);
-//    x = backward(x, 0xe2a60f19ul, 0x0eul, 0x8bb02c07ul);
-//    x = backward(x, 0x3b0e11f3ul, 0x13ul, 0x608aef3ful);
+	x = backward(x, 0xc1136a15ul, 0x12ul, 0x80ff0b94ul);
+	x = backward(x, 0xd38fd2ddul, 0x01ul, 0xd4d657b4ul);
+	x = backward(x, 0x59004eeful, 0x1eul, 0xf6c75e2cul);
+	x = backward(x, 0x366c3e25ul, 0x0aul, 0x61ebc208ul);
+	x = backward(x, 0x20a784c9ul, 0x15ul, 0x207d488bul);
+	x = backward(x, 0xc02864abul, 0x09ul, 0x709e62a3ul);
+	x = backward(x, 0xe2a60f19ul, 0x0eul, 0x8bb02c07ul);
+	x = backward(x, 0x3b0e11f3ul, 0x13ul, 0x608aef3ful);
 
-//    completedLevels_ = x>>16 & 0x3ff;
-//    if (!settingsGroup.hasKey(key)) completedLevels_ = 0;
-//    if (((x>>26) & 0x3ful) != (unsigned long) id_) completedLevels_ = 0;
-//    if ((x & 0xfffful) != (unsigned long) GETUID()) completedLevels_ = 0;
-//    if (completedLevels_ > noOfLevels_) completedLevels_ = 0;
+	completedLevels_ = x>>16 & 0x3ff;
+	if (!sett.contains(key)) completedLevels_ = 0;
+	if (((x>>26) & 0x3ful) != (unsigned long) id_) completedLevels_ = 0;
+	if ((x & 0xfffful) != (unsigned long) GETUID()) completedLevels_ = 0;
+	if (completedLevels_ > noOfLevels_) completedLevels_ = 0;
 
-//    if (level_ > completedLevels_) level_ = completedLevels_;
-//    if (level_ >= noOfLevels_) level_ = noOfLevels_-1;
-//    if (level_ < 0) level_ = 0;
-//  } else {
+	if (level_ > completedLevels_) level_ = completedLevels_;
+	if (level_ >= noOfLevels_) level_ = noOfLevels_-1;
+	if (level_ < 0) level_ = 0;
+  } else {
     level_ = 0;
     completedLevels_ = noOfLevels_;
-//  }
+  }
 }
 
 void
@@ -245,12 +242,10 @@ LevelCollection::LevelCollection(const QString &_path, const QString &_name,
 }
 
 LevelCollection::~LevelCollection() {
-  if (id_ >= 0) {  // TODO
-//    KSharedConfigPtr cfg=KSharedConfig::openConfig();
-//    KConfigGroup settingsGroup(cfg,"settings");
-
-//    const QString key = QString::asprintf("level%d", id_);
-//    settingsGroup.writeEntry(key, QStringLiteral("%1").arg(level_));
+  if (id_ >= 0) {
+	QSettings sett;
+	const QString key = QString::asprintf("level%d", id_);
+	sett.setValue(key, level_);
   }
 }
 
@@ -275,11 +270,9 @@ LevelCollection::levelCompleted() {
 
     const QString key = QString::asprintf("status%d", id_);
 
-	// TODO
-//    KSharedConfigPtr cfg=KSharedConfig::openConfig();
-//    KConfigGroup settingsGroup(cfg, "settings");
-//    settingsGroup.writeEntry(key, QStringLiteral("%1").arg(x));
-//    cfg->sync();
+	QSettings sett;
+	sett.setValue(key, qulonglong(x));
+	sett.sync();
   }
 }
 

@@ -21,14 +21,12 @@
 #include <assert.h>
 
 #include <QApplication>
-//#include <KSharedConfig>  // TODO
-//#include <KConfigGroup>  // TODO
 #include <QMenu>
 #include <QMenuBar>
 #include <QAction>
 #include <QKeyEvent>
 #include <QSignalMapper>
-
+#include <QSettings>
 #include <QString>
 #include <QFrame>
 #include <QTemporaryFile>
@@ -54,11 +52,8 @@ MainWindow::createCollectionMenu(QMenu* collection_) {
   }
   checkedCollection_ = 0;
 
-  // TODO
-  //KSharedConfigPtr cfg=KSharedConfig::openConfig();
-  //KConfigGroup settingsGroup(cfg, "settings");
-  //int id = settingsGroup.readEntry("collection", "10").toInt();
-  int id = 10;  // TODO
+  QSettings sett;
+  int id = sett.value("collection", 13).toInt();
 
   currentCollection_ = 0;
   for (int i=0; i<internalCollections_.collections(); i++) {
@@ -75,13 +70,9 @@ MainWindow::MainWindow() : QMainWindow(nullptr), externalCollection_(nullptr) {
 
   //setEraseColor(QColor(0,0,0));
 
-  // TODO
-//  KSharedConfigPtr cfg=KSharedConfig::openConfig();
-//  KConfigGroup geometryGroup(cfg, "Geometry");
-//  int width = geometryGroup.readEntry("width", "750").toInt();
-//  int height = geometryGroup.readEntry("height", "562").toInt();
-  int width = 750;  // TODO
-  int height = 562;  // TODO
+  QSettings sett;
+  int width = sett.value("width", 750).toInt();
+  int height = sett.value("height", 562).toInt();
   resize(width, height);
 
   playField_ = new PlayField(this);
@@ -238,19 +229,15 @@ MainWindow::MainWindow() : QMainWindow(nullptr), externalCollection_(nullptr) {
 
 MainWindow::~MainWindow()
 {
-// TODO
-//  KSharedConfigPtr cfg=KSharedConfig::openConfig();
-//  KConfigGroup geometryGroup(cfg, "Geometry");
-//  geometryGroup.writeEntry("width", QStringLiteral("%1").arg(width()));
-//  geometryGroup.writeEntry("height", QStringLiteral("%1").arg(height()));
+  QSettings sett;
+  sett.setValue("width", width());
+  sett.setValue("height", height());
 
-//  KConfigGroup settingsGroup(cfg, "settings");
-//  settingsGroup.writeEntry("collection", QStringLiteral("%1").arg(internalCollections_[checkedCollection_]->id()));
+  sett.setValue("collection", internalCollections_[checkedCollection_]->id());
 
   for (int i=1; i<=10; i++) {
     delete bookmarks_[i-1];
   }
-
 
   delete externalCollection_;
   delete[] level_act;
@@ -377,12 +364,8 @@ MainWindow::changeCollection(int id)
 
 void
 MainWindow::loadLevels() {
-	// TODO
-//  KSharedConfigPtr cfg=KSharedConfig::openConfig();
-//  KConfigGroup settingsGroup(cfg, "settings");
-//  QString lastFile = settingsGroup.readPathEntry("lastLevelFile",QLatin1String(""));
-	QString lastFile;  // TODO
-
+  QSettings sett;
+  QString lastFile = sett.value("lastLevelFile").toString();
   QUrl result = QFileDialog::getOpenFileUrl(this, tr("Load Levels From File"), lastFile, QStringLiteral("*"));
   if (result.isEmpty()) return;
 
@@ -391,9 +374,6 @@ MainWindow::loadLevels() {
 
 void
 MainWindow::openURL(const QUrl &_url) {
-	// TODO
-//  KSharedConfigPtr cfg=KSharedConfig::openConfig();
-
 //   int namepos = _url.path().findRev('/') + 1; // NOTE: findRev can return -1
 //   QString levelName = _url.path().mid(namepos);
   QString levelName = _url.fileName();
@@ -403,19 +383,6 @@ MainWindow::openURL(const QUrl &_url) {
   if (_url.isLocalFile()) {
     levelFile = _url.path();
   } else {
-/*
-//     levelFile = locateLocal("appdata", "levels/" + levelName);
-    KIO::TransferJob * job = KIO::get(_url);
-    job->exec();
-    if (job->error()) {
-      return;
-    }
-    f.open();
-    QByteArray data;
-    Q_EMIT job->data(job, data);
-    f.write(data);
-    levelFile = f.fileName();
-*/
 	  return;
   }
 
@@ -427,9 +394,8 @@ MainWindow::openURL(const QUrl &_url) {
     return;
   }
   if (_url.isLocalFile()) {
-	  // TODO
-	//KConfigGroup settingsGroup(cfg,"settings");
-	//settingsGroup.writePathEntry("lastLevelFile", _url.path());
+	QSettings sett;
+	sett.setValue("lastLevelFile", _url.path());
   }
 
   delete externalCollection_;
@@ -449,14 +415,4 @@ MainWindow::dragEnterEvent(QDragEnterEvent* event) {
 
 void
 MainWindow::dropEvent(QDropEvent*) {
-/*
-  QList<QUrl> urls = KUrlMimeData::urlsFromMimeData(event->mimeData());
-  if (!urls.isEmpty()) {
-//     kdDebug() << "MainWindow:Handling QUriDrag..." << endl;
-     if (urls.count() > 0) {
-         const QUrl &url = urls.first();
-         openURL(url);
-     }
-  }
-*/
 }

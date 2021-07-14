@@ -34,6 +34,11 @@ int
 main (int argc, char **argv)
 {
   QApplication app(argc, argv);
+
+  // values needed by QSettings
+  QCoreApplication::setOrganizationName("ksokoban-qt");
+  QCoreApplication::setApplicationName("ksokoban-qt");
+
 //  KLocalizedString::setApplicationDomain("ksokoban");
 
 //  KAboutData aboutData(QStringLiteral("ksokoban"), i18n("ksokoban"),
@@ -82,6 +87,7 @@ main (int argc, char **argv)
 
   //QObject::connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
 
-
-  return app.exec();
+  int rc = app.exec();
+  delete widget;  // or destructor will not be called and settings will not be saved
+  return rc;
 }

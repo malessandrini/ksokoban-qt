@@ -24,14 +24,12 @@
 #include <QPixmap>
 #include <QKeyEvent>
 #include <QApplication>
-//#include <KSharedConfig>  // TODO
-//#include <KConfigGroup>  // TODO
 #include <QMessageBox>
 #include <QPainter>
 #include <QMouseEvent>
 #include <QWheelEvent>
 #include <QFontDatabase>
-
+#include <QSettings>
 #include "PlayField.h"
 #include "ModalLabel.h"
 #include "LevelMap.h"
@@ -65,16 +63,12 @@ PlayField::PlayField(QWidget *parent)
 
   highlightX_ = highlightY_ = 0;
 
-  // TODO
-  //KSharedConfigPtr cfg = KSharedConfig::openConfig();
-  //KConfigGroup settingsGroup(cfg, "settings");
+  QSettings sett;
   
   imageData_ = new StaticImage;
 
-  // TODO
-  animDelay_ = 2;  // TODO
-  //animDelay_ = settingsGroup.readEntry("animDelay", QStringLiteral("2")).toInt();
-  //if (animDelay_ < 0 || animDelay_ > 3) animDelay_ = 2;
+  animDelay_ = sett.value("animDelay", 2).toInt();
+  if (animDelay_ < 0 || animDelay_ > 3) animDelay_ = 2;
 
   history_ = new History;
 
@@ -89,10 +83,8 @@ PlayField::PlayField(QWidget *parent)
 }
 
 PlayField::~PlayField() {
-	// TODO
-//  KSharedConfigPtr cfg = KSharedConfig::openConfig();
-//  KConfigGroup settingsGroup(cfg, "settings");
-//  settingsGroup.writeEntry("animDelay", QStringLiteral("%1").arg(animDelay_));
+  QSettings sett;
+  sett.setValue("animDelay", animDelay_);
 
   delete mapDelta_;
   delete history_;
