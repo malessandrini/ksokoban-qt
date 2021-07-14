@@ -23,8 +23,6 @@
 #include <QCommandLineOption>
 
 //#include <KAboutData>  // TODO
-//#include <KLocalizedString>  // TODO
-#define i18n(A) A  // TODO
 
 #include "MainWindow.h"
 
@@ -68,7 +66,7 @@ main (int argc, char **argv)
   app.setWindowIcon(QIcon::fromTheme(QStringLiteral("ksokoban")));
 
   QCommandLineParser parser;
-  parser.addPositionalArgument(i18n("[file]"), i18n("Level collection file to load"));
+  parser.addPositionalArgument(QObject::tr("[file]"), QObject::tr("Level collection file to load"));
 //  aboutData.setupCommandLine(&parser);  // TODO
   parser.process(app);
 //  aboutData.processCommandLine(&parser);  // TODO

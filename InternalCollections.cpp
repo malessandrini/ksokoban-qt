@@ -7,13 +7,12 @@
 #endif
 
 #include "InternalCollections.h"
+#include <QObject>
 
 #ifndef LEVELS_INCLUDED
 #define LEVELS_INCLUDED 1
 #include "levels/data.c"
 #endif
-//#include <KLocalizedString>  // TODO
-#define i18n(A) A  // TODO
 
 #define BUFSIZE (128*1024)
 
@@ -43,23 +42,23 @@ QString
 InternalCollections::collectionName(int _level) {
   switch (_level) {
   case 0:
-    return i18n("Sasquatch");
+	return QObject::tr("Sasquatch");
     break;
 
   case 1:
-    return i18n("Mas Sasquatch");
+	return QObject::tr("Mas Sasquatch");
     break;
 
   case 2:
-    return i18n("Sasquatch III");
+	return QObject::tr("Sasquatch III");
     break;
 
   case 3:
-    return i18n("Microban (easy)");
+	return QObject::tr("Microban (easy)");
     break;
 
   case 4:
-    return i18n("Sasquatch IV");
+	return QObject::tr("Sasquatch IV");
     break;
   }
 

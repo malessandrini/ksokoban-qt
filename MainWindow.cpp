@@ -38,9 +38,6 @@
 //#include <KIO/TransferJob>  // TODO
 //#include <KIconLoader>  // TODO
 #include <QDragEnterEvent>
-//#include <KStandardShortcut>  // TODO
-//#include <KLocalizedString>  // TODO
-#define i18n(A) A  // TODO
 #include <QFileDialog>
 
 #include "MainWindow.h"
@@ -96,54 +93,54 @@ MainWindow::MainWindow() : QMainWindow(nullptr), externalCollection_(nullptr) {
 
   menu_ = menuBar();//  new KMenuBar(this);
 
-  game_ = menu_->addMenu(i18n("&Game")); 
+  game_ = menu_->addMenu(tr("&Game"));
   
-  qact = new QAction(i18n("&Load Levels..."), this);
+  qact = new QAction(tr("&Load Levels..."), this);
   connect(qact, &QAction::triggered, this, &MainWindow::loadLevels);
   game_->addAction(qact);
   
-  qact = new QAction(i18n("&Next Level"), this);
+  qact = new QAction(tr("&Next Level"), this);
   qact->setShortcut(Qt::Key_N);
   connect(qact, &QAction::triggered, playField_, &PlayField::nextLevel);
   game_->addAction(qact);
   
-  qact = new QAction(i18n("&Previous Level"), this);
+  qact = new QAction(tr("&Previous Level"), this);
   qact->setShortcut(Qt::Key_P);
   connect(qact, &QAction::triggered, playField_, &PlayField::previousLevel);
   game_->addAction(qact);
   
-  qact = new QAction(i18n("Re&start Level"), this);
+  qact = new QAction(tr("Re&start Level"), this);
   qact->setShortcut(Qt::Key_Escape);
   connect(qact, &QAction::triggered, playField_, &PlayField::restartLevel);
   game_->addAction(qact);
 
-  createCollectionMenu(game_->addMenu(i18n("&Level Collection")));
+  createCollectionMenu(game_->addMenu(tr("&Level Collection")));
   
-  qact = new QAction(i18n("&Undo"), this);
+  qact = new QAction(tr("&Undo"), this);
   qact->setShortcut(QKeySequence::Undo);
   connect(qact, &QAction::triggered, playField_, &PlayField::undo);
   game_->addAction(qact);
   
-  qact = new QAction(i18n("&Redo"), this);
+  qact = new QAction(tr("&Redo"), this);
   qact->setShortcut(QKeySequence::Redo);
   connect(qact, &QAction::triggered, playField_, &PlayField::redo);
   game_->addAction(qact);
  
   game_->addSeparator();
  
-  qact = new QAction(i18n("&Quit"), this);
+  qact = new QAction(tr("&Quit"), this);
   qact->setShortcut(QKeySequence::Quit);
   connect(qact, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
   game_->addAction(qact);
  
-  animation_ = menu_->addMenu(i18n("&Animation"));
-  qa_slow = new QAction(i18n("&Slow"), this);
+  animation_ = menu_->addMenu(tr("&Animation"));
+  qa_slow = new QAction(tr("&Slow"), this);
   qa_slow->setCheckable(true);
-  qa_medium = new QAction(i18n("&Medium"), this);
+  qa_medium = new QAction(tr("&Medium"), this);
   qa_medium->setCheckable(true);
-  qa_fast = new QAction(i18n("&Fast"), this);
+  qa_fast = new QAction(tr("&Fast"), this);
   qa_fast->setCheckable(true);
-  qa_off = new QAction(i18n("&Off"), this);
+  qa_off = new QAction(tr("&Off"), this);
   qa_off->setCheckable(true);
   animation_->addAction(qa_slow);
   animation_->addAction(qa_medium);
@@ -159,69 +156,69 @@ MainWindow::MainWindow() : QMainWindow(nullptr), externalCollection_(nullptr) {
  
 
   
-  bookmarkMenu_ = menu_->addMenu(i18n("&Bookmarks"));
-  setBM_ = bookmarkMenu_->addMenu(i18n("&Set Bookmark"));
-  setBM_act[0] = setBM_->addAction(i18n("(unused)"));
+  bookmarkMenu_ = menu_->addMenu(tr("&Bookmarks"));
+  setBM_ = bookmarkMenu_->addMenu(tr("&Set Bookmark"));
+  setBM_act[0] = setBM_->addAction(tr("(unused)"));
   setBM_act[0]->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_1));
   connect(setBM_act[0], &QAction::triggered, this, [this]() {setBookmark(1);});
-  setBM_act[1] = setBM_->addAction(i18n("(unused)"));
+  setBM_act[1] = setBM_->addAction(tr("(unused)"));
   setBM_act[1]->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_2));
   connect(setBM_act[1], &QAction::triggered, this, [this]() {setBookmark(2);});
-  setBM_act[2] = setBM_->addAction(i18n("(unused)"));
+  setBM_act[2] = setBM_->addAction(tr("(unused)"));
   setBM_act[2]->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_3));
   connect(setBM_act[2], &QAction::triggered, this, [this]() {setBookmark(3);});
-  setBM_act[3] = setBM_->addAction(i18n("(unused)"));
+  setBM_act[3] = setBM_->addAction(tr("(unused)"));
   setBM_act[3]->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_4));
   connect(setBM_act[3], &QAction::triggered, this, [this]() {setBookmark(4);});
-  setBM_act[4] = setBM_->addAction(i18n("(unused)"));
+  setBM_act[4] = setBM_->addAction(tr("(unused)"));
   setBM_act[4]->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_5));
   connect(setBM_act[4], &QAction::triggered, this, [this]() {setBookmark(5);});
-  setBM_act[5] = setBM_->addAction(i18n("(unused)"));
+  setBM_act[5] = setBM_->addAction(tr("(unused)"));
   setBM_act[5]->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_6));
   connect(setBM_act[5], &QAction::triggered, this, [this]() {setBookmark(6);});
-  setBM_act[6] = setBM_->addAction(i18n("(unused)"));
+  setBM_act[6] = setBM_->addAction(tr("(unused)"));
   setBM_act[6]->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_7));
   connect(setBM_act[6], &QAction::triggered, this, [this]() {setBookmark(7);});
-  setBM_act[7] = setBM_->addAction(i18n("(unused)"));
+  setBM_act[7] = setBM_->addAction(tr("(unused)"));
   setBM_act[7]->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_8));
   connect(setBM_act[7], &QAction::triggered, this, [this]() {setBookmark(8);});
-  setBM_act[8] = setBM_->addAction(i18n("(unused)"));
+  setBM_act[8] = setBM_->addAction(tr("(unused)"));
   setBM_act[8]->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_9));
   connect(setBM_act[8], &QAction::triggered, this, [this]() {setBookmark(9);});
-  setBM_act[9] = setBM_->addAction(i18n("(unused)"));
+  setBM_act[9] = setBM_->addAction(tr("(unused)"));
   setBM_act[9]->setShortcut(QKeySequence(Qt::CTRL+Qt::Key_0));
   connect(setBM_act[9], &QAction::triggered, this, [this]() {setBookmark(10);});
   
-  goToBM_ =  bookmarkMenu_->addMenu(i18n("&Go to Bookmark"));
-  goToBM_act[0] = goToBM_->addAction(i18n("(unused)"));
+  goToBM_ =  bookmarkMenu_->addMenu(tr("&Go to Bookmark"));
+  goToBM_act[0] = goToBM_->addAction(tr("(unused)"));
   goToBM_act[0]->setShortcut(QKeySequence(Qt::Key_1));
   connect(goToBM_act[0], &QAction::triggered, this, [this]() {goToBookmark(1);});
 
-  goToBM_act[1] = goToBM_->addAction(i18n("(unused)"));
+  goToBM_act[1] = goToBM_->addAction(tr("(unused)"));
   goToBM_act[1]->setShortcut(QKeySequence(Qt::Key_2));
   connect(goToBM_act[1], &QAction::triggered, this, [this]() {goToBookmark(2);});
-  goToBM_act[2] = goToBM_->addAction(i18n("(unused)"));
+  goToBM_act[2] = goToBM_->addAction(tr("(unused)"));
   goToBM_act[2]->setShortcut(QKeySequence(Qt::Key_3));
   connect(goToBM_act[2], &QAction::triggered, this, [this]() {goToBookmark(3);});
-  goToBM_act[3] = goToBM_->addAction(i18n("(unused)"));
+  goToBM_act[3] = goToBM_->addAction(tr("(unused)"));
   goToBM_act[3]->setShortcut(QKeySequence(Qt::Key_4));
   connect(goToBM_act[3], &QAction::triggered, this, [this]() {goToBookmark(4);});
-  goToBM_act[4] = goToBM_->addAction(i18n("(unused)"));
+  goToBM_act[4] = goToBM_->addAction(tr("(unused)"));
   goToBM_act[4]->setShortcut(QKeySequence(Qt::Key_5));
   connect(goToBM_act[4], &QAction::triggered, this, [this]() {goToBookmark(5);});
-  goToBM_act[5] = goToBM_->addAction(i18n("(unused)"));
+  goToBM_act[5] = goToBM_->addAction(tr("(unused)"));
   goToBM_act[5]->setShortcut(QKeySequence(Qt::Key_6));
   connect(goToBM_act[5], &QAction::triggered, this, [this]() {goToBookmark(6);});
-  goToBM_act[6] = goToBM_->addAction(i18n("(unused)"));
+  goToBM_act[6] = goToBM_->addAction(tr("(unused)"));
   goToBM_act[6]->setShortcut(QKeySequence(Qt::Key_7));
   connect(goToBM_act[6], &QAction::triggered, this, [this]() {goToBookmark(7);});
-  goToBM_act[7] = goToBM_->addAction(i18n("(unused)"));
+  goToBM_act[7] = goToBM_->addAction(tr("(unused)"));
   goToBM_act[7]->setShortcut(QKeySequence(Qt::Key_8));
   connect(goToBM_act[7], &QAction::triggered, this, [this]() {goToBookmark(8);});
-  goToBM_act[8] = goToBM_->addAction(i18n("(unused)"));
+  goToBM_act[8] = goToBM_->addAction(tr("(unused)"));
   goToBM_act[8]->setShortcut(QKeySequence(Qt::Key_9));
   connect(goToBM_act[8], &QAction::triggered, this, [this]() {goToBookmark(9);});
-  goToBM_act[9] = goToBM_->addAction(i18n("(unused)"));
+  goToBM_act[9] = goToBM_->addAction(tr("(unused)"));
   goToBM_act[9]->setShortcut(QKeySequence(Qt::Key_0));
   connect(goToBM_act[9], &QAction::triggered, this, [this]() {goToBookmark(10);});
 
@@ -233,7 +230,7 @@ MainWindow::MainWindow() : QMainWindow(nullptr), externalCollection_(nullptr) {
   //help_ = new KHelpMenu(this, QString()(, false);  // TODO
   menu_->addSeparator();
   //menu_->addMenu( help_->menu() );
-  help_ = menu_->addMenu(i18n("&Help"));
+  help_ = menu_->addMenu(tr("&Help"));
   // TODO
 
   menu_->show();
@@ -331,7 +328,7 @@ MainWindow::updateBookmark(int num) {
   if (col >= 0 && col < internalCollections_.collections())
     name = internalCollections_[col]->name();
   else
-    name = i18n("(invalid)");
+	name = tr("(invalid)");
   QString l;
   l.setNum(lev+1);
   name += " #" + l;
@@ -389,7 +386,7 @@ MainWindow::loadLevels() {
 //  QString lastFile = settingsGroup.readPathEntry("lastLevelFile",QLatin1String(""));
 	QString lastFile;  // TODO
 
-  QUrl result = QFileDialog::getOpenFileUrl(this, i18n("Load Levels From File"), lastFile, QStringLiteral("*"));
+  QUrl result = QFileDialog::getOpenFileUrl(this, tr("Load Levels From File"), lastFile, QStringLiteral("*"));
   if (result.isEmpty()) return;
 
   openURL(result);
@@ -428,7 +425,7 @@ MainWindow::openURL(const QUrl &_url) {
   LevelCollection *tmpCollection = new LevelCollection(levelFile, levelName);
 
   if (tmpCollection->noOfLevels() < 1) {
-	QMessageBox::critical(this, i18n("Error"), i18n("No levels found in file"));
+	QMessageBox::critical(this, tr("Error"), tr("No levels found in file"));
     delete tmpCollection;
     return;
   }

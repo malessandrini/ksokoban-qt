@@ -27,8 +27,6 @@
 //#include <KSharedConfig>  // TODO
 //#include <KMessageBox>  // TODO
 //#include <KConfigGroup>  // TODO
-//#include <KLocalizedString>  // TODO
-#define i18n(A) A  // TODO
 #include <QMessageBox>
 #include <QPainter>
 #include <QMouseEvent>
@@ -54,8 +52,8 @@ PlayField::PlayField(QWidget *parent)
     xOffs_(0), yOffs_(0),
     wheelDelta_(0), debug_counter(0),
     sizeAllCursor(Qt::SizeAllCursor), crossCursor(Qt::CrossCursor),
-    levelText_(i18n("Level:")), stepsText_(i18n("Steps:")),
-    pushesText_(i18n("Pushes:")),
+	levelText_(tr("Level:")), stepsText_(tr("Steps:")),
+	pushesText_(tr("Pushes:")),
 	pnumXpm_(nullptr), ptxtXpm_(nullptr), snumXpm_(nullptr), stxtXpm_(nullptr),
 	lnumXpm_(nullptr), ltxtXpm_(nullptr), collXpm_(nullptr),
     statusFont_(QFontDatabase::systemFont(QFontDatabase::GeneralFont).family(), 18, QFont::Bold),
@@ -414,7 +412,7 @@ PlayField::timerEvent(QTimerEvent *) {
     paintDelta();
     if (levelMap_->completed()) {
       stopMoving();
-      ModalLabel::message(i18n("Level completed"), this);
+	  ModalLabel::message(tr("Level completed"), this);
       nextLevel();
       return;
     }
@@ -776,13 +774,13 @@ PlayField::setSize(int w, int h) {
 void
 PlayField::nextLevel() {
   if (levelMap_->level()+1 >= levelMap_->noOfLevels()) {
-    ModalLabel::message(i18n("\
+	ModalLabel::message(tr("\
 This is the last level in\n\
 the current collection."), this);
     return;
   }
   if (levelMap_->level() >= levelMap_->completedLevels()) {
-    ModalLabel::message(i18n("\
+	ModalLabel::message(tr("\
 You have not completed\n\
 this level yet."), this);
     return;
@@ -796,7 +794,7 @@ this level yet."), this);
 void
 PlayField::previousLevel() {
   if (levelMap_->level() <= 0) {
-    ModalLabel::message(i18n("\
+	ModalLabel::message(tr("\
 This is the first level in\n\
 the current collection."), this);
     return;
@@ -956,7 +954,7 @@ PlayField::setBookmark(Bookmark *bm) {
   if (!levelMap_->goodLevel()) return;
 
   if (collection()->id() < 0) {
-	QMessageBox::critical(this, i18n("Error"), i18n("Sorry, bookmarks for external levels\n"
+	QMessageBox::critical(this, tr("Error"), tr("Sorry, bookmarks for external levels\n"
 				  "is not implemented yet."));
     return;
   }
@@ -979,7 +977,7 @@ bool
 PlayField::canMoveNow() {
   if (moveInProgress_) return false;
   if (!levelMap_->goodLevel()) {
-    ModalLabel::message(i18n("This level is broken"), this);
+	ModalLabel::message(tr("This level is broken"), this);
     return false;
   }
   return true;
