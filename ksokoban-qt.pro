@@ -21,6 +21,7 @@ HEADERS += \
 	InternalCollections.h \
 	LevelCollection.h \
 	LevelMap.h \
+	MainWindow.h \
 	Map.h \
 	MapDelta.h \
 	ModalLabel.h \
@@ -39,6 +40,7 @@ SOURCES += \
 	InternalCollections.cpp \
 	LevelCollection.cpp \
 	LevelMap.cpp \
+	MainWindow.cpp \
 	Map.cpp \
 	MapDelta.cpp \
 	ModalLabel.cpp \
@@ -46,4 +48,5 @@ SOURCES += \
 	MoveSequence.cpp \
 	PathFinder.cpp \
 	PlayField.cpp \
-	StaticImage.cpp
+	StaticImage.cpp \
+	main.cpp
