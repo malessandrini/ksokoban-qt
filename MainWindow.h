@@ -20,7 +20,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-//#include <KMainWindow>  // TODO
 //#include <KHelpMenu>    // TODO
 #include <QMainWindow>
 #include <QUrl>

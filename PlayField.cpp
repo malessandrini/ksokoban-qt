@@ -25,7 +25,6 @@
 #include <QKeyEvent>
 #include <QApplication>
 //#include <KSharedConfig>  // TODO
-//#include <KMessageBox>  // TODO
 //#include <KConfigGroup>  // TODO
 #include <QMessageBox>
 #include <QPainter>

@@ -26,8 +26,6 @@
 
 //#include <KConfig>  // TODO
 
-#include <zlib.h>
-
 #include "LevelMap.h"
 #include "LevelCollection.h"
 

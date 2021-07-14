@@ -30,12 +30,9 @@
 #include <QSignalMapper>
 
 #include <QString>
-//#include <KUrlMimeData>  // TODO
 #include <QFrame>
 #include <QTemporaryFile>
 #include <QMessageBox>
-//#include <KIO/Job>  // TODO
-//#include <KIO/TransferJob>  // TODO
 //#include <KIconLoader>  // TODO
 #include <QDragEnterEvent>
 #include <QFileDialog>

@@ -2,10 +2,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#ifdef USE_LIBZ
-#include <zlib.h>
-#endif
-
 #include "InternalCollections.h"
 #include <QObject>
 
