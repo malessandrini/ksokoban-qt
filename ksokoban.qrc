@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>data/128-apps-ksokoban.png</file>
+    </qresource>
+</RCC>

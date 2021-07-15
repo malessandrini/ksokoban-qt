@@ -63,7 +63,9 @@ main (int argc, char **argv)
   QCoreApplication::setApplicationName("ksokoban-qt");
 
 
-  app.setWindowIcon(QIcon::fromTheme(QStringLiteral("ksokoban")));
+  app.setWindowIcon(QIcon::fromTheme(QStringLiteral("ksokoban")));  // try loading icon from the distro
+  if (app.windowIcon().isNull())
+	  app.setWindowIcon(QIcon(":/data/128-apps-ksokoban.png"));  // load from resources
 
   QCommandLineParser parser;
   parser.addPositionalArgument(QObject::tr("[file]"), QObject::tr("Level collection file to load"));

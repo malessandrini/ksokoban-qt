@@ -50,3 +50,6 @@ SOURCES += \
 	PlayField.cpp \
 	StaticImage.cpp \
 	main.cpp
+
+RESOURCES += \
+	ksokoban.qrc
