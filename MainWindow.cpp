@@ -387,12 +387,15 @@ void MainWindow::aboutDialog() {
 	l->addWidget(tabw);
 	auto *l1 = new QLabel(aboutData_about, &d);
 	l1->setAlignment(Qt::AlignTop);
+	l1->setMargin(10);
 	tabw->addTab(l1, tr("&About"));
 	auto *l2 = new QLabel(aboutData_authors, &d);
 	l2->setAlignment(Qt::AlignTop);
+	l2->setMargin(10);
 	tabw->addTab(l2, tr("A&uthors"));
 	auto *l3 = new QLabel(aboutData_credits, &d);
 	l3->setAlignment(Qt::AlignTop);
+	l3->setMargin(10);
 	tabw->addTab(l3, tr("&Credits"));
 	auto *bbox = new QDialogButtonBox(QDialogButtonBox::Close, Qt::Horizontal, &d);
 	l->addWidget(bbox);
