@@ -1,0 +1,180 @@
+<h1 id="introduction">Introduction</h1>
+<p>The first sokoban game was created in 1982 by Hiroyuki Imabayashi at the Japanese company Thinking Rabbit, Inc. “Sokoban” is Japanese for “warehouse keeper”. The idea is that you are a warehouse keeper trying to push crates to their proper locations in a warehouse.</p>
+<p>The problem is that you cannot pull the crates or step over them. If you are not careful, some of the crates can get stuck in wrong places and/or block your way.</p>
+<p>It can be rather difficult just to solve a level. But if you want to make it even harder, you can try to minimize the number of moves and/or pushes you use to solve the level.</p>
+<p>To make the game more fun for small kids (below 10 years or so), some collections with easier levels are also included in KSOKOBAN. These are marked <em>(easy)</em> in the level collection menu. Of course, these levels can be fun for adults too, for example if you don't want to expose yourself to too much mental strain.</p>
+<h1 id="how-to-play">The Game</h1>
+<p>The objective of the game is to push all the red gems to the goal squares, which are marked with green glassy round things on the floor.</p>
+<p>Use the cursor keys or the mouse to move about. If you move onto a gem using the cursor keys or the middle mouse button, and there is nothing blocking it on the opposite side, then you will push the gem. It isn't possible to pull the gems, so if you push a gem into a corner it will be stuck there. You cannot step over the gems either, so you can also get trapped in a part of the maze by blocking the way with gems. Also note that it isn't possible to push more than one gem at a time.</p>
+<p>If you notice that you have moved the gems in such a way that the level is impossible to solve, then you can always use the undo feature to go back to a position where the mistake has not yet been made. You can of course also restart the level from the very beginning.</p>
+<h2 id="controls">Controls</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cursor keys</td>
+<td>Move one square in a direction</td>
+</tr>
+<tr class="even">
+<td><span class="keycombo">CTRL+Cursor</span> keys</td>
+<td>Move as far as possible in a direction without pushing any gems</td>
+</tr>
+<tr class="odd">
+<td><span class="keycombo">SHIFT+Cursor</span> keys</td>
+<td>Move as far as possible in a direction, pushing any gem in the way</td>
+</tr>
+<tr class="even">
+<td>Left mouse button</td>
+<td>Move to any place in the maze that can be reached without pushing any gems</td>
+</tr>
+<tr class="odd">
+<td>Middle mouse button or <span class="keycombo">CTRL+Z</span></td>
+<td>Undo the last move</td>
+</tr>
+<tr class="even">
+<td>Right mouse button</td>
+<td>Move up/down/left/right in a straight line, pushing any gem in the way</td>
+</tr>
+<tr class="odd">
+<td>Mouse wheel</td>
+<td>Traverse the history</td>
+</tr>
+<tr class="even">
+<td><span class="keycombo">CTRLSHIFT+Z</span></td>
+<td>Redo the last undone move</td>
+</tr>
+<tr class="odd">
+<td>N</td>
+<td>Go to the next level in the current level collection</td>
+</tr>
+<tr class="even">
+<td>P</td>
+<td>Go to the previous level in the current level collection</td>
+</tr>
+<tr class="odd">
+<td>ESC</td>
+<td>Restart the current level</td>
+</tr>
+<tr class="even">
+<td><span class="keycombo">CTRL+Q</span></td>
+<td>Quit the game</td>
+</tr>
+</tbody>
+</table>
+<h2 id="loading-external-levels">Loading external levels</h2>
+<p>KSOKOBAN has the ability to load external sokoban levels from text files. You can load levels using the menu entry <span class="menuchoice">Game &gt; Load Levels...</span>, or by specifying the level file URL as a command line argument when starting KSOKOBAN from a shell.</p>
+<p>The external levels must be defined using the standard characters shown in the table below. If the file contains more than one level, the levels should be separated by blank lines. The file may also contain text between the levels.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Character</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>#</code></td>
+<td>Wall</td>
+</tr>
+<tr class="even">
+<td><em>(space)</em></td>
+<td>Empty square</td>
+</tr>
+<tr class="odd">
+<td><code>.</code></td>
+<td>Goal square</td>
+</tr>
+<tr class="even">
+<td><code>$</code></td>
+<td>Object on an empty square</td>
+</tr>
+<tr class="odd">
+<td><code>*</code></td>
+<td>Object on a goal square</td>
+</tr>
+<tr class="even">
+<td><code>@</code></td>
+<td>Start position on an empty square</td>
+</tr>
+<tr class="odd">
+<td><code>+</code></td>
+<td>Start position on a goal square</td>
+</tr>
+</tbody>
+</table>
+<p>As an example, below is a text representation of the first level in the <em>Microban</em> level collection:</p>
+<pre><code>####
+# .#
+#  ###
+#*@  #
+#  $ #
+#  ###
+####</code></pre>
+<h1 id="menu-reference">Menu Reference</h1>
+<p>This is a complete guide to the menus of KSOKOBAN.</p>
+<h2 id="game-menu">The Game Menu</h2>
+<dl>
+<dt><span class="menuchoice">Game &gt; Load Levels...</span></dt>
+<dd><p>Load an external level. See the section <a href="#loading-external-levels">Loading External Levels</a> for more information.</p>
+</dd>
+<dt><span class="menuchoice">Game &gt; Next Level</span></dt>
+<dd><p>Load the next level.</p>
+</dd>
+<dt><span class="menuchoice">Game &gt; Previous Level</span></dt>
+<dd><p>Go back to the previous level.</p>
+</dd>
+<dt><span class="menuchoice">Game &gt; Restart Level</span></dt>
+<dd><p>Restart the current level.</p>
+</dd>
+<dt><span class="menuchoice">Game &gt; Level Collection</span></dt>
+<dd><p>Change to a different set of levels. KSOKOBAN comes with several level sets, and you can load more that you can find on the internet.</p>
+</dd>
+<dt><span class="menuchoice">Game &gt; Undo</span></dt>
+<dd><p>Undo the last move</p>
+</dd>
+<dt><span class="menuchoice">Game &gt; Redo</span></dt>
+<dd><p>Redo the last move you undid with the menu item above.</p>
+</dd>
+<dt><span class="menuchoice">Game &gt; Quit</span></dt>
+<dd><p>Exit KSOKOBAN.</p>
+</dd>
+</dl>
+<h2 id="animation-menu">The Animation Menu</h2>
+<p>The Animation Menu allows you to specify the speed that movement replay animations are shown at.</p>
+<dl>
+<dt><span class="menuchoice">Animation &gt; Slow</span></dt>
+<dd><p>Show replay animations at a slow pace.</p>
+</dd>
+<dt><span class="menuchoice">Animation &gt; Medium</span></dt>
+<dd><p>This is the default setting, and shows replay animations at a slightly faster pace.</p>
+</dd>
+<dt><span class="menuchoice">Animation &gt; Fast</span></dt>
+<dd><p>Show replay animations at the fastest pace.</p>
+</dd>
+<dt><span class="menuchoice">Animation &gt; Off</span></dt>
+<dd><p>Do not animate replay animations.</p>
+</dd>
+</dl>
+<h2 id="bookmarks">The Bookmarks Menu</h2>
+<dl>
+<dt><span class="menuchoice">Bookmarks &gt; Set Bookmark</span></dt>
+<dd><p>KSOKOBAN allows you to set bookmarks with a level at a particular state. You might use this to save yourself repeating the same initial steps in a level.</p>
+<p>You can have up to ten bookmarks at a time, and access them via the hotkey <span class="keycombo">CTRL+</span>, where X is any digit between 0 and 9.</p>
+</dd>
+<dt><span class="menuchoice">Bookmarks &gt; Go to Bookmark</span></dt>
+<dd><p>Jump to a state you have previously saved as a bookmark.</p>
+</dd>
+</dl>
+<h2 id="help-menu">The Help Menu</h2>
+HELP.MENU.DOCUMENTATION
+<h1 id="credits">Credits and License</h1>
+<p>KSOKOBAN is copyright © 1998-2000 by ANDERS.WIDELL ANDERS.WIDELL.MAIL.</p>
+<p>The background graphics “starfield” was taken from the <a href="https://www.gimp.org/">Gimp</a>. All other graphics were created by ANDERS.WIDELL ANDERS.WIDELL.MAIL using the <a href="https://www.povray.org/">Povray</a> ray tracer.</p>
+<p>All the currently included sokoban levels were created by David W. Skinner <a href="mailto:sasquatch@bentonrea.com">sasquatch@bentonrea.com</a>. See <a href="https://www.sokobanonline.com/play/web-archive/david-w-skinner">his sokoban page</a>.</p>
+UNDERFDL UNDERGPL
+DOCUMENTATION.INDEX
