@@ -31,13 +31,19 @@
 #include <QFrame>
 #include <QTemporaryFile>
 #include <QMessageBox>
-//#include <KIconLoader>  // TODO
 #include <QDragEnterEvent>
 #include <QFileDialog>
+#include <QVBoxLayout>
+#include <QTabWidget>
+#include <QLabel>
+#include <QDialogButtonBox>
 
 #include "MainWindow.h"
 #include "PlayField.h"
 #include "LevelCollection.h"
+
+
+extern QString aboutData_about, aboutData_authors, aboutData_credits;
 
 
 void
@@ -215,11 +221,10 @@ MainWindow::MainWindow() : QMainWindow(nullptr), externalCollection_(nullptr) {
     updateBookmark(i);
   }
 
-  //help_ = new KHelpMenu(this, QString()(, false);  // TODO
   menu_->addSeparator();
-  //menu_->addMenu( help_->menu() );
   help_ = menu_->addMenu(tr("&Help"));
-  // TODO
+  help_->addAction(tr("Ksokoban &Handbook"));  // TODO
+  help_->addAction(tr("&About Ksokoban"), this, &MainWindow::aboutDialog);
 
   menu_->show();
   playField_->show();
@@ -370,6 +375,29 @@ MainWindow::loadLevels() {
   if (result.isEmpty()) return;
 
   openURL(result);
+}
+
+
+void MainWindow::aboutDialog() {
+	QDialog d;
+	d.setWindowTitle(tr("About Ksokoban"));
+	d.setMinimumSize(640, 480);
+	auto *l = new QVBoxLayout(&d);
+	auto *tabw = new QTabWidget(&d);
+	l->addWidget(tabw);
+	auto *l1 = new QLabel(aboutData_about, &d);
+	l1->setAlignment(Qt::AlignTop);
+	tabw->addTab(l1, tr("&About"));
+	auto *l2 = new QLabel(aboutData_authors, &d);
+	l2->setAlignment(Qt::AlignTop);
+	tabw->addTab(l2, tr("A&uthors"));
+	auto *l3 = new QLabel(aboutData_credits, &d);
+	l3->setAlignment(Qt::AlignTop);
+	tabw->addTab(l3, tr("&Credits"));
+	auto *bbox = new QDialogButtonBox(QDialogButtonBox::Close, Qt::Horizontal, &d);
+	l->addWidget(bbox);
+	connect(bbox, &QDialogButtonBox::rejected, &d, &QDialog::reject);
+	d.exec();
 }
 
 void

@@ -20,7 +20,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-//#include <KHelpMenu>    // TODO
 #include <QMainWindow>
 #include <QUrl>
 #include "Bookmark.h"
@@ -47,8 +46,8 @@ public slots:
   void updateAnimMenu(int id);
   void setBookmark(int id);
   void goToBookmark(int id);
-
   void loadLevels();
+  void aboutDialog();
 
 protected:
   void focusInEvent(QFocusEvent*) override;
