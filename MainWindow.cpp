@@ -408,13 +408,13 @@ void MainWindow::showHandbook() {
 	// first try standard distro location
 	QString f("/usr/share/doc/ksokoban-qt/index.html");
 	if (QFile::exists(f)) {
-		QDesktopServices::openUrl(QUrl("file://" + f));
+		QDesktopServices::openUrl(QUrl::fromLocalFile(f));
 		return;
 	}
 	// next look in installation directory
 	f = QCoreApplication::applicationDirPath() + "/index.html";
 	if (QFile::exists(f)) {
-		QDesktopServices::openUrl(QUrl("file://" + f));
+		QDesktopServices::openUrl(QUrl::fromLocalFile(f));
 		return;
 	}
 	QMessageBox::critical(this, tr("Error"), tr("Cannot find handbook file."));
