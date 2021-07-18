@@ -37,6 +37,7 @@
 #include <QTabWidget>
 #include <QLabel>
 #include <QDialogButtonBox>
+#include <qdesktopservices.h>
 
 #include "MainWindow.h"
 #include "PlayField.h"
@@ -223,7 +224,7 @@ MainWindow::MainWindow() : QMainWindow(nullptr), externalCollection_(nullptr) {
 
   menu_->addSeparator();
   help_ = menu_->addMenu(tr("&Help"));
-  help_->addAction(tr("Ksokoban &Handbook"));  // TODO
+  help_->addAction(tr("Ksokoban &Handbook"), this, &MainWindow::showHandbook);
   help_->addAction(tr("&About Ksokoban"), this, &MainWindow::aboutDialog);
 
   menu_->show();
@@ -401,6 +402,22 @@ void MainWindow::aboutDialog() {
 	l->addWidget(bbox);
 	connect(bbox, &QDialogButtonBox::rejected, &d, &QDialog::reject);
 	d.exec();
+}
+
+void MainWindow::showHandbook() {
+	// first try standard distro location
+	QString f("/usr/share/doc/ksokoban-qt/index.html");
+	if (QFile::exists(f)) {
+		QDesktopServices::openUrl(QUrl("file://" + f));
+		return;
+	}
+	// next look in installation directory
+	f = QCoreApplication::applicationDirPath() + "/index.html";
+	if (QFile::exists(f)) {
+		QDesktopServices::openUrl(QUrl("file://" + f));
+		return;
+	}
+	QMessageBox::critical(this, tr("Error"), tr("Cannot find handbook file."));
 }
 
 void

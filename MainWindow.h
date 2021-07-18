@@ -48,6 +48,7 @@ public slots:
   void goToBookmark(int id);
   void loadLevels();
   void aboutDialog();
+  void showHandbook();
 
 protected:
   void focusInEvent(QFocusEvent*) override;
