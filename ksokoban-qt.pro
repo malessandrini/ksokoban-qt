@@ -53,3 +53,6 @@ SOURCES += \
 
 RESOURCES += \
 	ksokoban.qrc
+
+win32:RC_ICONS = data/128-apps-ksokoban.ico
+
