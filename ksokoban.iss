@@ -38,4 +38,4 @@ Name: "{commonprograms}\ksokoban"; Filename: "{app}\ksokoban-qt.exe"
 Name: "{commondesktop}\ksokoban"; Filename: "{app}\ksokoban-qt.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\ksokoban-qt.exe"; Description: "{cm:LaunchProgram,GRA}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\ksokoban-qt.exe"; Description: "{cm:LaunchProgram,sokoban}"; Flags: nowait postinstall skipifsilent
