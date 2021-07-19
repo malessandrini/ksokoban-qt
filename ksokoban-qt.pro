@@ -54,5 +54,7 @@ SOURCES += \
 RESOURCES += \
 	ksokoban.qrc
 
+TRANSLATIONS += i18n/ksokoban-qt_it.ts
+
 win32:RC_ICONS = data/128-apps-ksokoban.ico
 
