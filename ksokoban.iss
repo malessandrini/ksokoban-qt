@@ -32,6 +32,7 @@ Source: "C:\Qt\Qt5.13.0\5.13.0\mingw73_32\bin\Qt5Widgets.dll"; DestDir: "{app}";
 Source: "C:\Qt\Qt5.13.0\Tools\mingw730_32\bin\libgcc_s_dw2-1.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Qt\Qt5.13.0\Tools\mingw730_32\bin\libstdc++-6.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Qt\Qt5.13.0\Tools\mingw730_32\bin\libwinpthread-1.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "i18n/*.qm"; DestDir: "{app}/i18n"
 
 [Icons]
 Name: "{commonprograms}\ksokoban"; Filename: "{app}\ksokoban-qt.exe"
