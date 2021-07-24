@@ -56,7 +56,7 @@ int main (int argc, char **argv)
 	  + "<p>https://github.com/malessandrini/ksokoban-qt/"
 	  + "<p>https://github.com/KDE/ksokoban"
 	  + "<p>http://www.shlomifish.org/open-source/projects/ksokoban/"
-	  + "<p>License: GNU General Public License Version 2";
+	  + "<p>" + QObject::tr("License:") + " GNU General Public License Version 2";
   aboutData_authors = QString("<p><b>Shlomi Fish</b>")
 	  + "<p>" + QObject::tr("For porting to Qt5/KF5 and doing other cleanups")
 	  + "<p>shlomif@cpan.org<p>http://www.shlomifish.org/"
@@ -77,6 +77,7 @@ int main (int argc, char **argv)
   app.setWindowIcon(QIcon::fromTheme(QStringLiteral("ksokoban")));  // try loading icon from the distro
   if (app.windowIcon().isNull())
 	  app.setWindowIcon(QIcon(":/data/128-apps-ksokoban.png"));  // load from resources
+  app.setApplicationDisplayName("KSokoban");
 
   QCommandLineParser parser;
   parser.addPositionalArgument(QObject::tr("[file]"), QObject::tr("Level collection file to load"));

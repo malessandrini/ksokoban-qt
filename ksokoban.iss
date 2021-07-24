@@ -1,3 +1,5 @@
+; Inno Setup script to make Windows installer
+
 [Setup]
 AppName=ksokoban
 AppVersion=0.5.0
@@ -5,8 +7,8 @@ DefaultDirName={pf}\ksokoban
 DisableProgramGroupPage=yes
 DisableWelcomePage=no
 OutputBaseFilename=install_ksokoban
-WizardImageFile=data/128-apps-ksokoban.bmp
-WizardSmallImageFile=data/128-apps-ksokoban-small.bmp
+WizardImageFile=data\128-apps-ksokoban.bmp
+WizardSmallImageFile=data\128-apps-ksokoban-small.bmp
 LicenseFile=COPYING
 ChangesAssociations=no
 UninstallDisplayIcon={app}\ksokoban-qt.exe,0
@@ -33,7 +35,7 @@ Source: "C:\Qt\Qt5.13.0\5.13.0\mingw73_32\bin\Qt5Widgets.dll"; DestDir: "{app}";
 Source: "C:\Qt\Qt5.13.0\Tools\mingw730_32\bin\libgcc_s_dw2-1.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Qt\Qt5.13.0\Tools\mingw730_32\bin\libstdc++-6.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Qt\Qt5.13.0\Tools\mingw730_32\bin\libwinpthread-1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "i18n/*.qm"; DestDir: "{app}/i18n"
+Source: "i18n\*.qm"; DestDir: "{app}\i18n"
 
 [Icons]
 Name: "{commonprograms}\ksokoban"; Filename: "{app}\ksokoban-qt.exe"

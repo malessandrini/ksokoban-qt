@@ -26,7 +26,7 @@
 
 #include <QFile>
 #include <QStandardPaths>
-
+#include <QDir>
 
 #include "Bookmark.h"
 #include "History.h"
@@ -35,6 +35,7 @@
 void
 Bookmark::fileName(QString &p) {
   p = QStandardPaths::writableLocation(QStandardPaths::DataLocation);
+  QDir().mkpath(p);
 
   QString n;
   n.setNum(number_);

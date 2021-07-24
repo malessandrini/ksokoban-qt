@@ -263,42 +263,47 @@ non sono ancora implementati.</translation>
         <translation>Sasquatch IV</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="32"/>
+        <location filename="../main.cpp" line="53"/>
         <source>The japanese warehouse keeper game</source>
         <translation>Il gioco giapponese del magazziniere</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="40"/>
+        <location filename="../main.cpp" line="59"/>
+        <source>License:</source>
+        <translation>Licenza:</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="61"/>
         <source>For porting to Qt5/KF5 and doing other cleanups</source>
         <translation>Per il porting a Qt5/KF5 e altre rifiniture</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="43"/>
+        <location filename="../main.cpp" line="64"/>
         <source>For rewriting the original ksokoban game from kde3 to kde4</source>
         <translation>Per aver convertito il gioco originale da kde3 a kde4</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="46"/>
+        <location filename="../main.cpp" line="67"/>
         <source>For writing the original ksokoban game</source>
         <translation>Per aver scritto il gioco ksokoban originale</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="49"/>
+        <location filename="../main.cpp" line="70"/>
         <source>For this Qt-only port</source>
         <translation>Per questo porting solo Qt</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="52"/>
+        <location filename="../main.cpp" line="73"/>
         <source>For contributing the Sokoban levels included in this game</source>
         <translation>Per aver fornito i livelli di Sokoban inclusi in questo gioco</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="71"/>
+        <location filename="../main.cpp" line="82"/>
         <source>[file]</source>
         <translation>[file]</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="71"/>
+        <location filename="../main.cpp" line="82"/>
         <source>Level collection file to load</source>
         <translation>File con la collezione di livelli da caricare</translation>
     </message>
