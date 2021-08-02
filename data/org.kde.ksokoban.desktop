@@ -64,4 +64,4 @@ Icon=ksokoban
 Terminal=false
 Type=Application
 X-KDE-StartupNotify=true
-Categories=Qt;Game;StrategyGame;
+Categories=Qt;Game;LogicGame;
