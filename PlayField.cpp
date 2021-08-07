@@ -511,11 +511,11 @@ PlayField::keyPressEvent(QKeyEvent * e) {
     else if (e->modifiers() & Qt::ShiftModifier) push(MAX_X, y);
     else push(x+1, y);
     break;
-
+#if 0
   case Qt::Key_Q:
     qApp->closeAllWindows();
     break;
-
+#endif
   case Qt::Key_Backspace:
   case Qt::Key_Delete:
     if (e->modifiers() & Qt::ControlModifier) redo();
