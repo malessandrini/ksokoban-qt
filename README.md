@@ -1,6 +1,6 @@
 # ksokoban-qt
 
-![Game screenshot](dpc/screenshot.png)
+![Game screenshot](doc/screenshot.png)
 
 This is a patched version of ksokoban, in order to build it with Qt only, with no dependencies on KDE libraries. Based on original sources at [https://github.com/KDE/ksokoban](https://github.com/KDE/ksokoban).
 
