@@ -2,7 +2,7 @@
 
 [Setup]
 AppName=ksokoban
-AppVersion=0.5.0
+AppVersion=0.5.1
 DefaultDirName={pf}\ksokoban
 DisableProgramGroupPage=yes
 DisableWelcomePage=no
@@ -27,7 +27,7 @@ Source: "AUTHORS"; DestDir: "{app}"
 Source: "COPYING"; DestDir: "{app}"
 Source: "COPYING.DOC"; DestDir: "{app}"
 Source: "NEWS"; DestDir: "{app}"
-Source: "README"; DestDir: "{app}"
+Source: "README.md"; DestDir: "{app}"
 Source: "TODO"; DestDir: "{app}"
 Source: "C:\Qt\Qt5.13.0\5.13.0\mingw73_32\bin\Qt5Core.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Qt\Qt5.13.0\5.13.0\mingw73_32\bin\Qt5Gui.dll"; DestDir: "{app}"; Flags: ignoreversion

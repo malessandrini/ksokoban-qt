@@ -1,7 +1,28 @@
+# ksokoban-qt
+
+This is a patched version of ksokoban, in order to build it with Qt only, with no dependencies on KDE libraries. Based on original sources at [https://github.com/KDE/ksokoban](https://github.com/KDE/ksokoban).
+
+Ksokoban is a great game, but it's not being distributed anymore with official distributions, perhaps for problems with specific KDE versions. So this patch (actually very light, with a few bug fixes, too) is meant to give new life to this game, while preserving its look and feel very closely.
+
+The build process is simplified, too, needing only the "qmake" utility provided by Qt. Provided you have the needed Qt development environment installed, just do:
+
+```
+mkdir build
+cd build
+qmake ..
+make
+```
+
+I'm also providing a deb package (Debian buster and newer) and a Windows installer, see "Releases" section.
+
+
+### Original README follows:
+
+
 ksokoban 0.5.0 - a Sokoban game by KDE
 
 copyright 1998 Anders Widell  <d95-awi@nada.kth.se>
-copyright 2012 £ukasz Kalam³acki <kalamlacki@gmail.com>
+copyright 2012 Lukasz Kalamlacki <kalamlacki@gmail.com>
 
 ksokoban is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License. See the file
