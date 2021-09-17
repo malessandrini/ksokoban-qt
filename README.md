@@ -1,5 +1,7 @@
 # ksokoban-qt
 
+![Game screenshot](dpc/screenshot.png)
+
 This is a patched version of ksokoban, in order to build it with Qt only, with no dependencies on KDE libraries. Based on original sources at [https://github.com/KDE/ksokoban](https://github.com/KDE/ksokoban).
 
 Ksokoban is a great game, but it's not being distributed anymore with official distributions, perhaps for problems with specific KDE versions. So this patch (actually very light, with a few bug fixes, too) is meant to give new life to this game, while preserving its look and feel very closely.
