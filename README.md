@@ -16,12 +16,14 @@ make
 I'm also providing a deb package (Debian buster and newer) and a Windows installer, see "Releases" section.
 
 
-### Original README follows:
+Original README follows:
 
+------------------------------------------------------------------------
 
 ksokoban 0.5.0 - a Sokoban game by KDE
 
 copyright 1998 Anders Widell  <d95-awi@nada.kth.se>
+
 copyright 2012 Lukasz Kalamlacki <kalamlacki@gmail.com>
 
 ksokoban is free software; you can redistribute it and/or modify it
@@ -33,8 +35,8 @@ See the file AUTHORS for details about where the levels come from.
 
 ------------------------------------------------------------------------
 
-PLAYING
-=======
+## PLAYING
+
 
 The objective of the game is to push all the red gems (these should
 actually have been crates, but gems looked nicer) to the goal squares,
